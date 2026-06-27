@@ -33,7 +33,7 @@ def generate_page(from_path, template_path, dest_path):
         raise Exception("Something went wrong! write")
 
 
-def generate_page_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_page_recursive(dir_path_content, template_path, dest_dir_path, basepath="./"):
     print(f"Generating all pages from {dir_path_content} to {dest_dir_path} using {template_path}")
     
     try:
@@ -53,6 +53,8 @@ def generate_page_recursive(dir_path_content, template_path, dest_dir_path):
 
             final = temp.replace("{{ Title }}", title)
             final = final.replace("{{ Content }}", Nodestring)
+            final = final.replace("href=\"/", f'href=\"{basepath}')
+            final = final.replace("src=\"/", f'src=\"{basepath}')
 
             parent_dir = os.path.dirname(files)
             parent_dir = parent_dir.replace(dir_path_content, dest_dir_path)

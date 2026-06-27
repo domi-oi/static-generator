@@ -4,7 +4,7 @@ import shutil
 def movefiles():
 
     curpath = f"{os.path.curdir}/static"
-    destpath = f"{os.path.curdir}/public"
+    destpath = f"{os.path.curdir}/docs"
     if not os.path.isdir(curpath):
             raise Exception(f'Error: "{curpath}" is not a folder')
     if os.path.isdir(destpath):
